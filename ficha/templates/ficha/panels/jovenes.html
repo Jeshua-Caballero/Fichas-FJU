@@ -1,0 +1,14 @@
+<h2>Jóvenes en el grupo {{ grupos.nombre }}</h2>
+
+{% if jovenes %}
+    <ul>
+        {% for joven in jovenes %}
+            <li>{{ joven.nombre }} - {{ joven.departamento.nombre }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay jóvenes en este grupo.</p>
+{% endif %}
+
+
+<p><a href="{% url 'ficha:inicio' %}">Volver</a></p>

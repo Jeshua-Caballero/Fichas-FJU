@@ -1,0 +1,15 @@
+{% extends 'ficha/base.html' %}
+
+{% block content %}
+
+<form method="POST">
+    {{ error }}
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Usuario">
+    <input type="text" name="password" placeholder="Contraseña">
+    <button>
+        Iniciar Sesión
+    </button>
+</form>
+
+{% endblock %}

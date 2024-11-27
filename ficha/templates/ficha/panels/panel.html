@@ -1,0 +1,43 @@
+{% extends 'ficha/base.html' %}
+
+{% block content %}
+<h1>Jovenes Registrados</h1>
+
+{% if request.user.perfilusuario.es_encargado_nacional %}
+    <h2>DEPARTAMENTOS</h2>
+    {% for departamento in departamentos %}
+        <a href="{% url 'ficha:panel_departamento' departamento.id %}">{{ departamento.nombre }}</a>
+    {% endfor %}
+
+    <h2>Jovenes</h2>
+    {% if jovenes %}
+        {% for joven in jovenes %}
+            <p>
+                Nombre: <a href="{% url 'ficha:obtener_ficha' joven.id %}">{{ joven.nombre }}</a>
+            </p>
+            <p>
+                <b>Registrado por :</b> {{ joven.usuarioqueregistro.usuario.username }}
+            </p>
+            <p>
+                <b>Departamento :</b> {{ joven.departamento.nombre }}
+            </p>
+            {% empty %}
+            <p>No hay jovenes registrados en este departamento aún</p>
+        {% endfor %}
+    {% endif %}
+
+{% else %}
+<h2>Jovenes de {{ request.user.perfilusuario.departamento.nombre }}</h2>
+    {% for joven in jovenes %}
+        <p>
+            Nombre: <a href="{% url 'ficha:obtener_ficha' joven.id %}">{{ joven.nombre }}</a>
+        </p>
+        <p>
+            <b>Registrado por :</b> {{ joven.usuarioqueregistro.usuario.username }}
+        </p>
+        {% empty %}
+            <p>No hay jovenes registrados aún</p>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

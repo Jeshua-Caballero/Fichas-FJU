@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}{% endblock %}</title>
+</head>
+<body>
+    <a href="{% url 'ficha:principal_form' %}">Principal</a>
+    <a href="{% url 'ficha:contacto_form' %}">Contactos</a>
+    <a href="{% url 'ficha:domicilio_form' %}">Domicilio</a>
+    <a href="{% url 'ficha:espiritual_form' %}">Espiritual</a>
+    <a href="{% url 'ficha:proyectos_form' %}">Proyectos</a>
+    <a href="{% url 'ficha:estudio_form' %}">Estudio</a>
+    <a href="{% url 'ficha:laboral_form' %}">Laboral</a>
+    <a href="{% url 'ficha:idiomas_form' %}">Idiomas</a>
+    <a href="{% url 'ficha:talentos_form' %}">Talentos</a>
+    <a href="{% url 'ficha:panel' %}">Volver</a>
+
+
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% if user.is_authenticated %}
+        <div id="sidebar">
+            <a href="{% url 'ficha:cerrar_sesion' %}">Cerrar Sesión</a>
+        </div>
+    {% endif %}
+</body>
+</html>

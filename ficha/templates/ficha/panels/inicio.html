@@ -1,0 +1,54 @@
+{% extends 'ficha/base.html' %}
+{% load filtros_personales %}
+{% load static %}
+
+{% block content %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'ficha/css/inicio.css '%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://kit.fontawesome.com/01e154aaee.js" crossorigin="anonymous"></script>
+    <!-- {% block titulo %}INICIO{% endblock %} -->
+</head>
+<h1>Panel de Control</h1>
+
+<section class="section content-box">
+    <h3 class="title-databox">Tablero Panel de Control</h3>
+    {% for grupo in grupos %}
+        {% with grupo_estilos|diccionario:grupo.nombre as estilos %}
+            {% if estilos %}
+                <div class="data-box {{ estilos.bg_class }}">
+                    <div class="inside-text">
+                        <h3>150</h3>
+                        <p>{{ estilos.texto|safe }}</p>
+                    </div>
+                    <div class="icon">
+                        <img src="{% static estilos.imagen %}" alt="{{ grupo.nombre }}" class="img-icon">
+                    </div>
+                    <a href="{% url 'ficha:inicio_grupos' grupo.id %}" class="info">
+                        Más info <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            {% endif %}
+            <p>Este es el dict{{ estilos }}</p>
+        {% endwith %}
+        <p>grupo{{ grupo }}</p>
+        <p>Nombre{{ grupo.nombre }}</p>
+        <p>Este es el dict 2 {{ grupo.nombre|diccionario:grupo_estilos }}</p>
+    {% endfor %}
+</section>
+
+
+
+    
+    </section>
+        <section class="content-chart">
+        <h3>Joven por Tribu</h3>
+        <canvas id="my-chart"> </canvas>
+        <div id="labels-container" style="margin-left: 20px;">
+        <!-- Aquí se agregarán los labels -->
+        </div>
+    </section>
+{% endblock %}

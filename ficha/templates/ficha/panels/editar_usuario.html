@@ -1,0 +1,12 @@
+{% extends 'ficha/base.html' %}
+
+{% block content %}
+<h2>Usuarios Registrados</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button>
+        Guardar
+    </button>
+</form>
+{% endblock %}

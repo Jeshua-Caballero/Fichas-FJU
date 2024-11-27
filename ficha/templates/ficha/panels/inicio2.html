@@ -1,0 +1,125 @@
+{% extends 'ficha/base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'ficha/css/inicio.css '%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://kit.fontawesome.com/01e154aaee.js" crossorigin="anonymous"></script>
+    <!-- {% block titulo %}INICIO{% endblock %} -->
+</head>
+
+
+    <section class="section content-box">
+        <h3 class="title-databox"> Tablero Panel de control</h3>
+    {% for grupo in grupos %}
+        {% if grupo.nombre.1 %}
+            <div class="data-box bg-agua">
+                <div class="inside-text">
+                    <h3>150</h3>
+            
+                    <p>Jóvenes en el Grupo <br>Agua</p>
+                </div>
+                <div class="icon">
+                    <img src="{% static 'ficha/image/gotas.png' %}" alt="Agua" class="img-icon">
+                </div>
+                <a href="{% url 'ficha:inicio_grupos' grupo.id %}" class="info"> Más info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        {% elif grupo.nombre.2 %}
+            <div class="data-box bg-aceite">
+                <div class="inside-text">
+                    <h3>150</h3>
+            
+                    <p>Jóvenes en el Grupo <br>Aceite</p>
+                </div>
+                <div class="icon">
+                    <img src="{% static 'ficha/image/petroleo.png' %}" alt="Aceite" class="img-icon"></i>
+                </div>
+                <a href="{% url 'ficha:inicio_grupos' grupo.id %}" class="info"> Más info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        {% elif grupo == grupo[2] %}
+            <div class="data-box bg-sal">
+                <div class="inside-text">
+                    <h3>150</h3>
+            
+                    <p>Jóvenes en el Grupo <br>Sal</p>
+                </div>
+                <div class="icon">
+                    <img src="{% static 'ficha/image/salFB.png' %}" alt="Sal" class="img-icon"></i>
+                </div>
+                <a href="{% url 'ficha:inicio_grupos' grupo.id %}" class="info"> Más info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        {% elif grupo == grupo[3] %}
+            <div class="data-box bg-luz">
+                <div class="inside-text">
+                    <h3>150</h3>
+            
+                    <p>Jóvenes en el Grupo <br>Luz</p>
+                </div>
+                <div class="icon">
+                    <img src="{% static 'ficha/image/luz-de-tungsteno.png' %}" alt="Luz" class="img-icon"></i>
+                </div>
+                <a href="{% url 'ficha:inicio_grupos' grupo.id %}" class="info"> Más info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        {% elif grupo == grupo[4] %}
+            <div class="data-box bg-altar">
+                <div class="inside-text">
+                    <h3>150</h3>
+            
+                    <p>Jóvenes que desean <br>Servir en el Altar</p>
+                </div>
+                <div class="icon">
+                    <img src="{% static 'ficha/image/altar.png' %}" alt="Altar" class="img-icon"></i>
+                </div>
+                <a href="{% url 'ficha:inicio_grupos' grupo.id %}" class="info"> Más info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        {% elif grupo == grupo[5] %}
+            <div class="data-box bg-agregado">
+                <div class="inside-text">
+                    <h3>150</h3>
+            
+                    <p>Jóvenes <br>Registrados</p>
+                </div>
+                <div class="icon">
+                    <img src="{% static 'ficha/image/addJoven.png' %}" alt="Registrado" class="img-icon"></i>
+                </div>
+                <a href="{% url 'ficha:inicio_grupos' grupo.id %}" class="info"> Más info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        {% elif grupo == grupo[6] %}
+            <div class="data-box bg-apartado">
+                <div class="inside-text">
+                    <h3>150</h3>
+            
+                    <p>Jóvenes <br>Apartados</p>
+                </div>
+                <div class="icon">
+                    <img src="{% static 'ficha/image/removeJoven.png' %}" alt="Apartados" class="img-icon"></i>
+                </div>
+                <a href="{% url 'ficha:inicio_grupos' grupo.id %}" class="info"> Más info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        {% elif grupo == grupo[7] %}
+            <div class="data-box bg-iglesias">
+                <div class="inside-text">
+                    <h3>150</h3>
+            
+                    <p>Iglesias <br>Registradas</p>
+                </div>
+                <div class="icon">
+                    <img src="{% static 'ficha/image/iglesia.png' %}" alt="Iglesias" class="img-icon"></i>
+                </div>
+                <a href="{% url 'ficha:inicio_grupos' grupo.id %}" class="info"> Más info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        {% endif %}
+    {% endfor %}
+        </section>
+    <section class="content-chart">
+        <h3>Joven por Tribu</h3>
+        <canvas id="my-chart"> </canvas>
+        <div id="labels-container" style="margin-left: 20px;">
+        <!-- Aquí se agregarán los labels -->
+        </div>
+    </section>
+
+{% endblock %}

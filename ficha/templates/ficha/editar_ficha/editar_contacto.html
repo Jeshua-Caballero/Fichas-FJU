@@ -1,0 +1,29 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'ficha/css/styleFicha.css' %}">
+{% extends 'ficha/editar_ficha/edit_base.html' %}
+
+{% block titulo %}Fichas Registradas{% endblock %}
+
+{% block content %}
+
+        <p>
+            Nombre: {{ ficha.nombre }}
+        </p>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>
+                Actualizar
+            </button>
+        </form>
+    {% if request.user is superuser or request.user.perfilusuario.es_encargado %}
+        <form action="{% url 'ficha:eliminar_ficha' ficha.id %}" method="POST">
+            {% csrf_token %}
+            <button>
+                Eliminar Ficha
+            </button>
+        </form>
+    {% endif %}
+{% endblock %}

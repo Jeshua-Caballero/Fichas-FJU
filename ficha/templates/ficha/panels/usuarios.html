@@ -1,0 +1,12 @@
+{% extends 'ficha/base.html' %}
+
+{% block titulo %}Usuarios{% endblock %}
+
+{% block content %}
+<h2>Usuarios Registrados</h2>
+{% for usuario in usuarios %}
+    <p>
+        <a href="{% url 'ficha:editar_usuario' usuario.id %}">{{ usuario.usuario }}</a>---{{ usuario.departamento }}---{{ usuario.es_encargado_nacional }}---{{ usuario.es_encargado }}---{{ usuario.es_asistente }}
+    </p>
+{% endfor %}
+{% endblock %}

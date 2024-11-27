@@ -1,0 +1,17 @@
+{% extends 'ficha/base.html' %}
+
+
+{% block titulo %}Mi perfil{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+    {{ error }}
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>
+        Guardar
+    </button>
+</form>
+
+{% endblock %}

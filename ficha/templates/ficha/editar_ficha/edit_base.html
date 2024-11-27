@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'ficha/css/styleFicha.css' %}">
+    <title>{% block titulo %}{% endblock %}</title>
+</head>
+<body>
+    <nav class="nav">
+        <h3 class="nav__titulo">Editar Ficha Joven</h3>
+        <ul class="nav__list">
+
+            <li class="nav__item">
+                <a href="{% url 'ficha:obtener_ficha' ficha.id %}">Principal</a>
+            </li>
+
+            <li class="nav__item">
+                <a href="{% url 'ficha:editar_contacto' %}">Contactos</a>
+            </li>
+
+            <li class="nav__item">
+                <a href="{% url 'ficha:editar_domicilio' %}">Domicilio</a>
+            </li>
+
+            <li class="nav__item">
+                <a href="{% url 'ficha:editar_espiritual' %}">Espiritual</a>
+            </li>
+
+            <li class="nav__item">
+                <a href="{% url 'ficha:editar_proyectos' %}">Proyectos</a>
+            </li>
+
+            <li class="nav__item">
+                <a href="{% url 'ficha:editar_estudio' %}">Estudio</a>
+            </li>
+
+            <li class="nav__item">
+                <a href="{% url 'ficha:editar_laboral' %}">Laboral</a>
+            </li>
+
+            <li class="nav__item">
+                <a href="{% url 'ficha:editar_idiomas' %}">Idiomas</a>
+            </li>
+
+            <li class="nav__item">
+                <a href="{% url 'ficha:editar_talentos' %}">Talentos</a>
+            </li>
+
+            <li class="nav__item">
+                <a href="/editar/talentos/">archivo</a>
+            </li>
+
+            <li class="nav__item">
+                <a href="/ficha/panel/de/control/">responsabilidad</a>
+            </li>
+
+            <li class="nav__item">
+                <a href="{% url 'ficha:panel' %}">Volver</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% if user.is_authenticated %}
+        <div id="sidebar">
+            <a href="{% url 'ficha:cerrar_sesion' %}">Cerrar Sesión</a>
+        </div>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'ficha/panels/panel_base.html' %}
+
+{% block titulo %}Domicilio{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+    {{ error }}
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>
+        Guardar
+    </button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'ficha/base.html' %}
+
+{% block titulo %}Login Asistente{% endblock %}
+
+{% block content %}
+
+
+
+<form method="POST">
+    {{ error }}
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Usuario">
+    <input type="text" name="password" placeholder="Contraseña">
+    <button>Inisiar Sesión</button>
+</form>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,78 @@
+{% load static %}
+{% load filtros_personales %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static 'ficha/css/inicio.css '%}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <script src="https://kit.fontawesome.com/01e154aaee.js" crossorigin="anonymous"></script>
+        <title>{% block titulo %}{% endblock %}</title>
+    </head>
+    <body>
+        <header class="main-header">
+            <!-- <span class="logo-small"><b>FJU</b></span>
+            <span class="logo-large"><b>FJU Bolivia</b></span> -->
+
+            <nav class="main-nav">
+                <div class="nav-burger">
+                    <a href="#" class="bars">
+                        <i class="fa-solid fa-bars"></i>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <ul class="nav-list">
+                        <li class="list-item">
+                            <a href="#">
+                                <span>{{ request.user }}</span>
+                                <!-- poner icono -->
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main class="main-content">
+            {% block content %}
+            {% endblock %}
+        </main>
+        <aside class="main-sidebar">
+            <div class="logo">
+                <span class="logo-small" hidden><b>FJU</b></span>
+                <span class="logo-large"><b>FJU Bolivia</b></span>
+            </div>
+            <ul class="list-aside">
+                <li class="list-aside__item">
+                    <a href="{% url 'ficha:inicio' %}">    
+                        <i class="fa-solid fa-house"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+                <li class="list-aside__item">
+                    <a href="{% url 'ficha:usuarios' %}">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Usuarios</span>    
+                    </a>
+                </li>
+                <li class="list-aside__item">
+                    <a href="#">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>Iglesias</span>
+                    </a>
+                </li>
+                <li class="list-aside__item">
+                    <a href="{% url 'ficha:principal_form' %}">
+                        <i class="fa-solid fa-table-cells"></i>
+                    <span>Registro de Jovenes</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="{% static 'ficha/js/home.js' %}"></script>
+    </body>
+</html>
+

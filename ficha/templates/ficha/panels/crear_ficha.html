@@ -1,0 +1,15 @@
+{% extends 'ficha/panels/panel_base.html' %}
+
+{% block titulo %}Registrar un Joven{% endblock %}
+
+{% block content %}
+<h1>Datos Basicos de la Ficha</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>
+        Guardar
+    </button>
+</form>
+
+{% endblock %}

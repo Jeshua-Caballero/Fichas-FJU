@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'ficha/css/styleFicha.css' %}">
+    <title>{% block titulo %}{% endblock %}</title>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+        <nav>
+            <a href="{% url 'ficha:inicio' %}">Inicio</a>
+            {% if user.perfilusuario.es_encargado_nacional %}
+                <a href="{% url 'ficha:usuarios' %}">Usuarios</a>
+            {% endif %}
+            <a href="{% url 'ficha:panel' %}">Lista de Jovenes</a>
+            <a href="{% url 'ficha:principal_form' %}">Agregar Nuevo Joven</a>
+            <a href="{% url 'ficha:cerrar_sesion' %}">Cerrar Sesión</a>
+        </nav>
+    {% endif %}
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% if user.is_authenticated %}
+        <div id="sidebar">
+            <h1>My Perfil</h1>
+            {% if is_authenticated %}
+                <li>
+                    <a href="{% url 'ficha:cerrar_sesion' %}">Cerrar Sesión</a>
+                </li>
+            {% endif %}
+        </div>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/ficha/css/styleFicha.css">
+    <title>Ficha FJU Beta</title>
+</head>
+<body>
+    <section class="home-section">
+        <div class="home-img">
+            <img src="static/ficha/image/Logo_Fuerza_Joven_Universal.png" alt="logoFJU">
+        </div>
+        <h1>ELIJE TU TIPO DE CUENTA</h1>
+        <nav class="home-nav">
+            <h2>Log in</h2>
+            <ul class="home-nav__ul">
+                    <li class="home-nav__li">
+                        <a href="{% url 'ficha:login_asistente' %}">
+                            <img src="static/ficha/image/asistente.png" alt="Asistente">
+                            <p>Asistente</p>
+                        </a>
+                    </li>
+                    <li class="home-nav__li">
+                        <a href="{% url 'ficha:login_encargado' %}">
+                            <img src="static/ficha/image/encargado.png" alt="Encargado">
+                            <p>Encargado</p>
+                        </a>
+                    </li>
+                    <li class="home-nav__li">
+                        <a href="{% url 'ficha:login_encargado_nacional' %}">
+                            <img src="static/ficha/image/Encargado Nacional.png" alt="Encargado Nacional">
+                            <p>Encargado Nacional</p>
+                        </a>
+                    </li>
+            </ul>
+        </nav> 
+    </section>   
+</body>
+</html>
+
+
